@@ -17,9 +17,6 @@ namespace VideoSendRecevieSecurity
     public class SeedCrypto
     {
 
-        private const int KeySize = 16;
-        private const int BlockSize = 16;
-
         public byte[] Encrypt(byte[] plainBytes, byte[] key, byte[] iv)
         {
             BufferedBlockCipher cipher = new PaddedBufferedBlockCipher(new CbcBlockCipher(new SeedEngine()));
@@ -52,16 +49,6 @@ namespace VideoSendRecevieSecurity
             byte[] result = new byte[length];
             Array.Copy(output, 0, result, 0, length);
             return result;
-        }
-
-        public byte[] GenerateRandomBytes(int length)
-        {
-            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
-            {
-                byte[] bytes = new byte[length];
-                rng.GetBytes(bytes);
-                return bytes;
-            }
         }
     }
 }

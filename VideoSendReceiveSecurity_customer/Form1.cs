@@ -80,7 +80,6 @@ namespace VideoSendReceiveSecurity_customer
 
                         byte[] encryptedBytes = sc.Encrypt(encodedData,key,iv);
 
-
                         senderSocket.Send(BitConverter.GetBytes(encryptedBytes.Length));
 
                         for (int i = 0; i < encryptedBytes.Length; i += ChunkSize)
